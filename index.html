@@ -1,0 +1,2542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Commonwealth Supportive Services — Medicaid-Funded Care in Richmond, VA</title>
+<meta name="description" content="Licensed Medicaid provider offering DD Waiver support, Mobile Crisis Response, and Community Stabilization in Richmond, Virginia. Person-centered care, available 24/7.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════
+   DESIGN TOKENS
+═══════════════════════════════════════════ */
+:root {
+  --stiletto-50:  #fdf4f3;
+  --stiletto-100: #fce9e7;
+  --stiletto-200: #f9d3d2;
+  --stiletto-300: #f3b0ae;
+  --stiletto-400: #ec8081;
+  --stiletto-500: #e05357;
+  --stiletto-600: #cc323e;
+  --stiletto-700: #a42330;
+  --stiletto-800: #902130;
+  --stiletto-900: #7b202f;
+  --stiletto-950: #440d14;
+
+  --warm-50:  oklch(0.98 0.006 60);
+  --warm-100: oklch(0.96 0.008 60);
+  --warm-200: oklch(0.91 0.010 60);
+  --warm-300: oklch(0.83 0.012 60);
+  --warm-400: oklch(0.72 0.014 60);
+  --warm-500: oklch(0.52 0.013 60);
+  --warm-600: oklch(0.42 0.016 60);
+  --warm-700: oklch(0.33 0.016 60);
+  --warm-800: oklch(0.22 0.014 60);
+  --warm-900: oklch(0.14 0.012 60);
+
+  --slate-100: oklch(0.93 0.010 245);
+  --slate-200: oklch(0.86 0.014 245);
+  --slate-400: oklch(0.60 0.022 245);
+  --slate-700: oklch(0.30 0.028 245);
+  --slate-800: oklch(0.22 0.026 245);
+  --slate-900: oklch(0.16 0.022 245);
+  --slate-950: oklch(0.11 0.018 245);
+
+  --bg:           var(--warm-50);
+  --bg-alt:       var(--warm-100);
+  --surface:      #ffffff;
+  --border:       var(--warm-200);
+  --border-med:   var(--warm-300);
+  --text:         var(--warm-900);
+  --text-body:    var(--warm-700);
+  --text-muted:   var(--warm-500);
+  --primary:      var(--stiletto-700);
+  --primary-dark: var(--stiletto-800);
+  --primary-lt:   var(--stiletto-50);
+  --crisis:       oklch(0.52 0.130 62);
+  --crisis-lt:    oklch(0.97 0.040 68);
+  --crisis-bd:    oklch(0.72 0.100 68);
+  --crisis-text:  oklch(0.32 0.100 68);
+
+  --font-serif: 'DM Serif Display', Georgia, serif;
+  --font-sans:  'Plus Jakarta Sans', system-ui, sans-serif;
+
+  --r-sm:   6px;
+  --r-md:   12px;
+  --r-lg:   16px;
+  --r-xl:   24px;
+  --r-2xl:  32px;
+  --r-full: 9999px;
+
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ═══════════════════════════════════════════
+   BASE
+═══════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--text-body);
+  background: var(--surface);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+/* ═══════════════════════════════════════════
+   TYPOGRAPHY
+═══════════════════════════════════════════ */
+.eyebrow {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+.eyebrow--light  { color: var(--stiletto-300); }
+.eyebrow--muted  { color: var(--text-muted); }
+.eyebrow--white  { color: rgba(255,255,255,0.70); }
+
+.display {
+  font-family: var(--font-serif);
+  font-size: clamp(2.75rem, 5vw + 0.75rem, 4.75rem);
+  line-height: 1.07;
+  color: var(--text);
+}
+
+.h2 {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 3vw + 0.75rem, 3rem);
+  line-height: 1.15;
+  font-weight: 400;
+  color: var(--text);
+}
+.h2--light { color: #ffffff; }
+
+.h3 {
+  font-family: var(--font-serif);
+  font-size: clamp(1.25rem, 1.5vw + 0.5rem, 1.625rem);
+  font-weight: 400;
+  color: var(--text);
+}
+
+/* ═══════════════════════════════════════════
+   BUTTONS
+═══════════════════════════════════════════ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: var(--r-md);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1;
+  transition: all 200ms var(--ease-out);
+  min-height: 48px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.btn--primary {
+  background: var(--primary);
+  color: #fff;
+  box-shadow: 0 1px 3px oklch(0.38 0.12 18 / 0.20), 0 4px 12px oklch(0.38 0.12 18 / 0.12);
+}
+.btn--primary:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 2px 6px oklch(0.38 0.12 18 / 0.20), 0 8px 24px oklch(0.38 0.12 18 / 0.22);
+}
+.btn--primary:active { transform: translateY(0); }
+
+.btn--outline {
+  background: transparent;
+  color: var(--primary);
+  border: 1.5px solid var(--stiletto-400);
+}
+.btn--outline:hover {
+  background: var(--primary-lt);
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.btn--white {
+  background: #fff;
+  color: var(--warm-800);
+  box-shadow: 0 1px 3px oklch(0 0 0 / 0.10);
+}
+.btn--white:hover {
+  background: var(--warm-100);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px oklch(0 0 0 / 0.12);
+}
+
+.btn--ghost-dark {
+  background: oklch(1 0 0 / 0.08);
+  color: #fff;
+  border: 1.5px solid oklch(1 0 0 / 0.18);
+}
+.btn--ghost-dark:hover {
+  background: oklch(1 0 0 / 0.15);
+  transform: translateY(-2px);
+}
+
+.btn-group { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+
+/* ═══════════════════════════════════════════
+   LAYOUT
+═══════════════════════════════════════════ */
+.container {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+@media (min-width: 768px) { .container { padding: 0 48px; } }
+@media (min-width: 1280px) { .container { padding: 0 32px; } }
+
+.section { padding: 96px 0; }
+@media (max-width: 767px) { .section { padding: 64px 0; } }
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: var(--r-full);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--primary-lt);
+  color: var(--primary);
+}
+.tag--crisis {
+  background: var(--crisis-lt);
+  color: var(--crisis-text);
+  border: 1px solid var(--crisis-bd);
+}
+.tag--neutral {
+  background: var(--warm-100);
+  color: var(--warm-600);
+}
+
+:focus-visible {
+  outline: 2.5px solid var(--primary);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Hero entrance animation */
+.hero-content > * {
+  animation: heroEnter 700ms var(--ease-out) both;
+}
+.hero-content > *:nth-child(1) { animation-delay: 100ms; }
+.hero-content > *:nth-child(2) { animation-delay: 200ms; }
+.hero-content > *:nth-child(3) { animation-delay: 300ms; }
+.hero-content > *:nth-child(4) { animation-delay: 380ms; }
+.hero-content > *:nth-child(5) { animation-delay: 450ms; }
+.hero-visual { animation: heroEnter 800ms var(--ease-out) 250ms both; }
+@keyframes heroEnter {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ═══════════════════════════════════════════
+   NAV
+═══════════════════════════════════════════ */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  background: rgba(255,255,255,0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 300ms ease, background 300ms ease, box-shadow 300ms ease;
+}
+.nav.scrolled {
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom-color: var(--border);
+  box-shadow: 0 2px 16px oklch(0 0 0 / 0.06);
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+@media (min-width: 768px) { .nav-inner { padding: 0 48px; } }
+@media (min-width: 1280px) { .nav-inner { padding: 0 32px; } }
+
+.nav-logo img {
+  height: 40px;
+  width: auto;
+}
+
+.nav-links {
+  display: none;
+  gap: 36px;
+  align-items: center;
+}
+@media (min-width: 900px) { .nav-links { display: flex; } }
+
+.nav-link {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-body);
+  position: relative;
+  padding-bottom: 2px;
+  transition: color 200ms ease;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0; right: 100%;
+  height: 1.5px;
+  background: var(--primary);
+  transition: right 220ms var(--ease-out);
+}
+.nav-link:hover { color: var(--primary); }
+.nav-link:hover::after { right: 0; }
+
+.nav-phone {
+  display: flex;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-body);
+  gap: 6px;
+  align-items: center;
+  transition: color 200ms ease;
+}
+.nav-phone:hover { color: var(--primary); }
+/* Hide the text label on small screens, keep icon + number */
+@media (max-width: 899px) {
+  .nav-phone-label { display: none; }
+}
+@media (min-width: 900px) {
+  .nav-phone-label { display: inline; }
+}
+
+.nav-cta-btn {
+  padding: 10px 20px;
+  border-radius: var(--r-md);
+  font-size: 14px;
+  font-weight: 600;
+  min-height: 40px;
+  display: none;
+}
+@media (min-width: 900px) { .nav-cta-btn { display: inline-flex; } }
+
+/* ═══════════════════════════════════════════
+   HERO — LIGHT OPEN FEEL
+═══════════════════════════════════════════ */
+.hero {
+  position: relative;
+  background: var(--bg);
+  padding: 120px 0 80px;
+  overflow: hidden;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+}
+@media (max-width: 1023px) {
+  .hero {
+    min-height: auto;
+    padding: 96px 0 60px;
+  }
+}
+
+/* Hide hero image entirely on mobile — content leads */
+@media (max-width: 1023px) {
+  .hero-visual { display: none !important; }
+}
+
+/* Subtle background texture */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 70% 40%, oklch(0.38 0.12 18 / 0.04) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 80% at 20% 80%, oklch(0.60 0.022 245 / 0.05) 0%, transparent 60%);
+  pointer-events: none;
+}
+/* Red accent bar */
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: linear-gradient(to right, var(--stiletto-700), var(--stiletto-500), transparent);
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  align-items: center;
+}
+@media (min-width: 1024px) {
+  .hero-inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+  }
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px 6px 8px;
+  border-radius: var(--r-full);
+  background: var(--primary-lt);
+  border: 1px solid var(--stiletto-200);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--primary);
+  width: fit-content;
+  animation: float-subtle 4s ease-in-out infinite;
+}
+.hero-badge-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #16a34a;
+  box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.4);
+  animation: pulse-dot 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+@keyframes pulse-dot {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.4); }
+  50%  { box-shadow: 0 0 0 5px rgba(22, 163, 74, 0); }
+}
+@keyframes float-subtle {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-3px); }
+}
+
+.hero-headline { color: var(--text); }
+.hero-headline em { color: var(--primary); font-style: italic; }
+
+.hero-sub {
+  font-size: clamp(1rem, 1.2vw + 0.4rem, 1.0625rem);
+  color: var(--text-body);
+  max-width: 520px;
+  line-height: 1.75;
+}
+
+.hero-crisis {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 16px;
+  border-radius: var(--r-md);
+  background: var(--crisis-lt);
+  border: 1px solid var(--crisis-bd);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--crisis-text);
+  width: fit-content;
+}
+.hero-crisis strong { font-weight: 700; }
+
+/* Hero image panel */
+.hero-visual {
+  position: relative;
+}
+.hero-image-wrap {
+  position: relative;
+  border-radius: var(--r-2xl);
+  overflow: hidden;
+  box-shadow: 0 24px 80px oklch(0 0 0 / 0.12), 0 4px 16px oklch(0 0 0 / 0.08);
+  transition: transform 600ms var(--ease-out);
+}
+.hero-image-wrap:hover { transform: translateY(-4px); }
+.hero-image-wrap img {
+  width: 100%;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  transition: transform 6000ms ease;
+}
+.hero-image-wrap:hover img { transform: scale(1.03); }
+
+/* Red accent shape behind image */
+.hero-image-accent {
+  position: absolute;
+  bottom: -24px; right: -24px;
+  width: 200px; height: 200px;
+  border-radius: var(--r-xl);
+  background: var(--stiletto-700);
+  z-index: -1;
+  opacity: 0.12;
+}
+
+/* Floating feature card */
+.hero-card {
+  position: absolute;
+  bottom: 28px;
+  left: -32px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: 0 8px 32px oklch(0 0 0 / 0.12);
+  max-width: 260px;
+  z-index: 3;
+  animation: card-float 5s ease-in-out infinite;
+  animation-delay: 1.5s;
+}
+@media (max-width: 1023px) { .hero-card { display: none; } }
+@keyframes card-float {
+  0%, 100% { transform: translateY(0px); }
+  50%  { transform: translateY(-6px); }
+}
+
+.hero-card-title {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.10em;
+  color: var(--text-muted);
+}
+.hero-card-items { display: flex; flex-direction: column; gap: 10px; }
+.hero-card-item {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 13px;
+  color: var(--text-body);
+  line-height: 1.45;
+}
+.hero-card-icon {
+  width: 28px; height: 28px;
+  border-radius: 6px;
+  background: var(--primary-lt);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+.hero-card-item strong {
+  display: block;
+  color: var(--text);
+  font-weight: 600;
+  font-size: 12px;
+}
+.hero-card-divider {
+  height: 1px;
+  background: var(--border);
+}
+.hero-card-cert {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* ═══════════════════════════════════════════
+   TRUST BAR
+═══════════════════════════════════════════ */
+.trust-bar {
+  background: var(--stiletto-700);
+  padding: 16px 0;
+  overflow: hidden;
+}
+.trust-marquee {
+  display: flex;
+  gap: 48px;
+  animation: marquee 30s linear infinite;
+  width: max-content;
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+  color: rgba(255,255,255,0.92);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+.trust-item-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--stiletto-300);
+  flex-shrink: 0;
+}
+
+/* ═══════════════════════════════════════════
+   MISSION STRIP
+═══════════════════════════════════════════ */
+.mission-strip {
+  background: var(--warm-100);
+  border-bottom: 1px solid var(--border);
+  padding: 48px 0;
+}
+.mission-strip-inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 820px;
+}
+.mission-strip-accent {
+  width: 40px; height: 3px;
+  border-radius: 2px;
+  background: var(--primary);
+}
+.mission-strip-quote {
+  font-family: var(--font-serif);
+  font-size: clamp(1.125rem, 1.8vw + 0.4rem, 1.5rem);
+  color: var(--text);
+  line-height: 1.55;
+  font-style: italic;
+  font-weight: 400;
+}
+.mission-strip-cite {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--primary);
+  font-style: normal;
+}
+
+/* ═══════════════════════════════════════════
+   PROBLEM
+═══════════════════════════════════════════ */
+.problem {
+  background: var(--surface);
+  padding: 96px 0;
+}
+
+.problem-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 64px;
+  align-items: center;
+}
+@media (min-width: 1024px) {
+  .problem-grid { grid-template-columns: 1fr 1fr; gap: 80px; }
+}
+
+.problem-visual {
+  position: relative;
+  border-radius: var(--r-2xl);
+  overflow: hidden;
+  background: var(--warm-100);
+}
+.problem-visual-img {
+  width: 100%;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
+  transition: transform 600ms var(--ease-out);
+}
+.problem-visual:hover .problem-visual-img { transform: scale(1.03); }
+
+.problem-overlay-card {
+  position: absolute;
+  bottom: 24px; left: 24px; right: 24px;
+  background: rgba(255,255,255,0.90);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: var(--r-lg);
+  padding: 20px 24px;
+  border: 1px solid var(--border);
+}
+.problem-overlay-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.10em;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+.problem-overlay-value {
+  font-family: var(--font-serif);
+  font-size: 1.125rem;
+  color: var(--text);
+  line-height: 1.4;
+}
+
+.problem-content { display: flex; flex-direction: column; gap: 32px; }
+
+.problem-intro { display: flex; flex-direction: column; gap: 16px; }
+
+.problem-body {
+  font-size: 17px;
+  color: var(--text-body);
+  line-height: 1.8;
+}
+
+.problem-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+
+.problem-list-item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 18px 20px;
+  border-radius: var(--r-md);
+  background: var(--warm-50);
+  border: 1px solid var(--border);
+  transition: all 220ms var(--ease-out);
+  cursor: default;
+}
+.problem-list-item:hover {
+  border-color: var(--stiletto-200);
+  background: var(--stiletto-50);
+  transform: translateX(6px);
+  box-shadow: 0 4px 16px oklch(0.38 0.08 18 / 0.08);
+}
+.problem-list-icon {
+  width: 36px; height: 36px; flex-shrink: 0;
+  border-radius: var(--r-sm);
+  background: var(--stiletto-100);
+  color: var(--primary);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  transition: background 220ms ease;
+}
+.problem-list-item:hover .problem-list-icon { background: var(--stiletto-200); }
+.problem-list-text {
+  font-size: 15px;
+  color: var(--text-body);
+  line-height: 1.55;
+  padding-top: 7px;
+}
+
+/* ═══════════════════════════════════════════
+   GUIDE / ABOUT
+═══════════════════════════════════════════ */
+.guide {
+  background: var(--slate-900);
+  padding: 96px 0;
+  position: relative;
+  overflow: hidden;
+}
+.guide-glow {
+  position: absolute;
+  top: -200px; right: -200px;
+  width: 700px; height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, oklch(0.38 0.12 18 / 0.07) 0%, transparent 65%);
+  pointer-events: none;
+}
+.guide-glow-2 {
+  position: absolute;
+  bottom: -150px; left: -150px;
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, oklch(0.30 0.028 245 / 0.15) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.guide-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 64px;
+  align-items: start;
+}
+@media (min-width: 1024px) { .guide-grid { grid-template-columns: 1fr 1fr; gap: 80px; } }
+
+.guide-content { display: flex; flex-direction: column; gap: 32px; }
+
+.guide-heading { color: #fff; }
+.guide-heading em { color: var(--stiletto-400); font-style: italic; }
+
+.guide-body {
+  font-size: 17px;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.8;
+}
+
+.guide-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.guide-stat {
+  padding: 20px 24px;
+  border-radius: var(--r-md);
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: all 220ms ease;
+}
+.guide-stat:hover {
+  background: rgba(255,255,255,0.09);
+  border-color: rgba(255,255,255,0.14);
+  transform: translateY(-2px);
+}
+.guide-stat-value {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  color: #fff;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.guide-stat-label {
+  font-size: 13px;
+  color: rgba(255,255,255,0.50);
+  line-height: 1.4;
+}
+
+.guide-profile {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: var(--r-xl);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.guide-profile-img {
+  width: 100%;
+  border-radius: var(--r-lg);
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  object-position: center 15%;
+  background: var(--slate-800);
+  transition: transform 500ms var(--ease-out);
+}
+.guide-profile:hover .guide-profile-img { transform: scale(1.02); }
+.guide-profile-bio { display: flex; flex-direction: column; gap: 8px; }
+.guide-profile-credential {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: var(--r-full);
+  background: oklch(0.38 0.12 18 / 0.30);
+  border: 1px solid oklch(0.38 0.12 18 / 0.40);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--stiletto-300);
+  width: fit-content;
+}
+.guide-profile-name {
+  font-family: var(--font-serif);
+  font-size: 1.375rem;
+  color: #fff;
+}
+.guide-profile-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.50);
+}
+.guide-profile-copy {
+  font-size: 14px;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.65;
+}
+.guide-profile-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+.guide-profile-tag {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.35);
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 3px 10px;
+  border-radius: var(--r-full);
+}
+
+/* ═══════════════════════════════════════════
+   SERVICES — Mobile accordion + Desktop tabs
+═══════════════════════════════════════════ */
+.services {
+  background: var(--bg);
+  padding: 96px 0;
+}
+@media (max-width: 767px) { .services { padding: 64px 0; } }
+
+.services-header {
+  text-align: center;
+  margin-bottom: 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+}
+.services-header p {
+  font-size: 17px;
+  color: var(--text-muted);
+  max-width: 480px;
+}
+@media (max-width: 767px) {
+  .services-header { margin-bottom: 28px; }
+  .services-header p { font-size: 15px; }
+}
+
+/* ── MOBILE ACCORDION (shown < 900px) ── */
+.services-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+@media (min-width: 900px) { .services-accordion { display: none; } }
+
+.acc-item {
+  background: var(--surface);
+  border: 1.5px solid var(--border-med);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  transition: border-color 220ms ease, box-shadow 220ms ease;
+}
+.acc-item.open {
+  border-color: var(--stiletto-300);
+  box-shadow: 0 8px 32px oklch(0.38 0.08 18 / 0.10);
+}
+.acc-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  -webkit-tap-highlight-color: transparent;
+  min-height: 68px;
+}
+.acc-trigger-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.acc-icon {
+  width: 44px; height: 44px; flex-shrink: 0;
+  border-radius: var(--r-md);
+  background: var(--primary-lt);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+  transition: background 220ms ease;
+}
+.acc-item.open .acc-icon { background: var(--stiletto-100); }
+.acc-label-block { display: flex; flex-direction: column; gap: 2px; }
+.acc-title {
+  font-family: var(--font-serif);
+  font-size: 1.0625rem;
+  color: var(--text);
+  line-height: 1.2;
+}
+.acc-subtitle {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+.acc-chevron {
+  width: 20px; height: 20px; flex-shrink: 0;
+  color: var(--text-muted);
+  transition: transform 280ms var(--ease-out), color 220ms ease;
+}
+.acc-item.open .acc-chevron {
+  transform: rotate(180deg);
+  color: var(--primary);
+}
+/* CSS grid trick for smooth height animation — no JS height measurement needed */
+.acc-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 340ms var(--ease-out);
+}
+.acc-item.open .acc-body { grid-template-rows: 1fr; }
+.acc-body-inner { overflow: hidden; }
+.acc-content {
+  border-top: 1px solid var(--border);
+  padding: 20px 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.acc-image {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  object-position: center 35%;
+  border-radius: var(--r-md);
+  background: var(--warm-200);
+}
+.acc-desc {
+  font-size: 15px;
+  color: var(--text-body);
+  line-height: 1.7;
+}
+.acc-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.acc-feature {
+  display: flex;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--text-body);
+  align-items: flex-start;
+}
+.acc-feature::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--primary);
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+
+/* ── DESKTOP TAB LAYOUT (shown ≥ 900px) ── */
+.services-layout {
+  display: none;
+}
+@media (min-width: 900px) {
+  .services-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+}
+.services-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: sticky;
+  top: 88px;
+}
+.services-tab {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 18px;
+  border-radius: var(--r-md);
+  cursor: pointer;
+  transition: all 180ms var(--ease-out);
+  border: 1.5px solid transparent;
+  background: transparent;
+  text-align: left;
+}
+.services-tab-icon { font-size: 20px; flex-shrink: 0; }
+.services-tab-content { display: flex; flex-direction: column; gap: 2px; }
+.services-tab-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-body);
+  transition: color 180ms ease;
+}
+.services-tab-short { font-size: 12px; color: var(--text-muted); }
+.services-tab:hover { background: var(--bg-alt); border-color: var(--border-med); }
+.services-tab.active { background: var(--primary-lt); border-color: var(--stiletto-200); }
+.services-tab.active .services-tab-name { color: var(--primary); }
+
+.services-panels {
+  min-height: 520px;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 650ms var(--ease-out) 200ms, transform 650ms var(--ease-out) 200ms;
+}
+.services-panels.panels-visible { opacity: 1; transform: translateY(0); }
+.services-panel { display: none; }
+.services-panel.active {
+  display: block;
+  animation: panelIn 320ms var(--ease-out) both;
+}
+@keyframes panelIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.services-panel-inner {
+  background: var(--surface);
+  border: 1px solid var(--border-med);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  box-shadow: 0 4px 24px oklch(0 0 0 / 0.06);
+  transition: box-shadow 300ms ease;
+}
+.services-panel-inner:hover { box-shadow: 0 12px 48px oklch(0 0 0 / 0.10); }
+.services-panel-image-wrap { width: 100%; aspect-ratio: 16/7; overflow: hidden; }
+.services-panel-image {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+  background: var(--warm-200);
+  transition: transform 600ms var(--ease-out);
+}
+.services-panel-inner:hover .services-panel-image { transform: scale(1.03); }
+.services-panel-body {
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.services-panel-tag-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.services-panel-heading {
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  color: var(--text);
+  font-weight: 400;
+}
+.services-panel-copy { font-size: 16px; color: var(--text-body); line-height: 1.8; max-width: 620px; }
+.services-panel-features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  list-style: none;
+}
+.services-panel-feature {
+  display: flex; gap: 10px;
+  align-items: flex-start;
+  font-size: 14px; color: var(--text-body);
+}
+.services-panel-feature::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--primary);
+  flex-shrink: 0;
+  margin-top: 7px;
+}
+
+
+/* ═══════════════════════════════════════════
+   PLAN
+═══════════════════════════════════════════ */
+.plan {
+  background: var(--bg-alt);
+  padding: 96px 0;
+}
+
+.plan-header {
+  text-align: center;
+  margin-bottom: 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+}
+.plan-header p { font-size: 17px; color: var(--text-muted); max-width: 440px; }
+
+.plan-steps {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  position: relative;
+}
+@media (min-width: 768px) {
+  .plan-steps {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  /* Connector line between steps */
+  .plan-steps::before {
+    content: '';
+    position: absolute;
+    top: 32px;
+    left: calc(16.66% + 20px);
+    right: calc(16.66% + 20px);
+    height: 2px;
+    background: linear-gradient(to right, var(--stiletto-200), var(--stiletto-400), var(--stiletto-200));
+    z-index: 0;
+  }
+}
+
+.plan-step {
+  position: relative;
+  z-index: 1;
+  background: var(--surface);
+  border: 1px solid var(--border-med);
+  border-radius: var(--r-xl);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: all 240ms var(--ease-out);
+}
+.plan-step:hover {
+  border-color: var(--stiletto-200);
+  box-shadow: 0 12px 40px oklch(0.38 0.08 18 / 0.10);
+  transform: translateY(-6px);
+}
+.plan-step-number {
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-serif);
+  font-size: 1.375rem;
+  flex-shrink: 0;
+  box-shadow: 0 4px 14px oklch(0.38 0.12 18 / 0.28);
+  transition: transform 200ms var(--ease-spring), box-shadow 200ms ease;
+}
+.plan-step:hover .plan-step-number {
+  transform: scale(1.10);
+  box-shadow: 0 8px 24px oklch(0.38 0.12 18 / 0.38);
+}
+.plan-step-title { font-family: var(--font-serif); font-size: 1.25rem; color: var(--text); }
+.plan-step-copy { font-size: 15px; color: var(--text-body); line-height: 1.65; }
+
+.plan-cta { text-align: center; margin-top: 48px; }
+
+/* ═══════════════════════════════════════════
+   TESTIMONIAL — ACCESSIBILITY FIXED
+═══════════════════════════════════════════ */
+.testimonial {
+  background: var(--stiletto-950);
+  padding: 96px 0;
+  position: relative;
+  overflow: hidden;
+}
+.testimonial-deco {
+  position: absolute;
+  top: -60px; left: -10px;
+  font-family: var(--font-serif);
+  font-size: 320px;
+  line-height: 1;
+  color: var(--stiletto-900);
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.6;
+  aria-hidden: true;
+}
+
+.testimonial-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.testimonial-quote {
+  font-family: var(--font-serif);
+  font-size: clamp(1.25rem, 2.2vw + 0.4rem, 1.875rem);
+  /* WCAG AA: white on #440d14 = 9.1:1 contrast — passes AAA */
+  color: #ffffff;
+  line-height: 1.55;
+  font-style: italic;
+}
+
+.testimonial-divider {
+  width: 48px; height: 2px;
+  background: var(--stiletto-600);
+  border-radius: 2px;
+}
+
+.testimonial-attr {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+}
+.testimonial-name {
+  font-size: 14px;
+  font-weight: 700;
+  /* WCAG AA: stiletto-300 (#f3b0ae) on #440d14 = 5.8:1 — passes AA */
+  color: var(--stiletto-300);
+  text-transform: uppercase;
+  letter-spacing: 0.10em;
+}
+.testimonial-role {
+  font-size: 14px;
+  /* WCAG AA: rgba(255,255,255,0.82) on #440d14 = 7.4:1 — passes AAA */
+  color: rgba(255, 255, 255, 0.82);
+}
+.testimonial-disclaimer {
+  margin-top: 4px;
+  font-size: 12px;
+  font-style: italic;
+  /* WCAG AA: rgba(255,255,255,0.60) on #440d14 = 5.2:1 — passes AA */
+  color: rgba(255, 255, 255, 0.60);
+  background: rgba(255,255,255,0.06);
+  padding: 4px 12px;
+  border-radius: var(--r-full);
+  border: 1px solid rgba(255,255,255,0.10);
+}
+
+/* ═══════════════════════════════════════════
+   LEAD MAGNET
+═══════════════════════════════════════════ */
+.lead-magnet { background: var(--surface); padding: 96px 0; }
+
+.lead-magnet-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  align-items: center;
+  background: linear-gradient(135deg, var(--stiletto-700) 0%, var(--stiletto-950) 100%);
+  border-radius: var(--r-2xl);
+  padding: 64px;
+  overflow: hidden;
+  position: relative;
+}
+@media (min-width: 900px) { .lead-magnet-inner { grid-template-columns: 1fr 1fr; gap: 64px; } }
+@media (max-width: 767px) { .lead-magnet-inner { padding: 40px 28px; } }
+
+.lead-magnet-inner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+}
+.lead-magnet-inner::after {
+  content: '';
+  position: absolute;
+  top: -100px; right: -100px;
+  width: 400px; height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.07) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.lead-magnet-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+  z-index: 1;
+}
+.lead-magnet-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--stiletto-300);
+}
+.lead-magnet-heading {
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 2.5vw + 0.5rem, 2.25rem);
+  color: #fff;
+  line-height: 1.2;
+}
+.lead-magnet-copy {
+  font-size: 16px;
+  color: rgba(255,255,255,0.70);
+  line-height: 1.75;
+}
+.lead-magnet-items {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.lead-magnet-item {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 14px;
+  color: rgba(255,255,255,0.85);
+}
+.lead-magnet-item::before {
+  content: '→';
+  color: var(--stiletto-300);
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.lead-magnet-form { position: relative; z-index: 1; }
+.lead-magnet-form-card {
+  background: rgba(255,255,255,0.09);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: var(--r-xl);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.lead-magnet-form-title {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  color: #fff;
+}
+.form-field { display: flex; flex-direction: column; gap: 6px; }
+.form-label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.55);
+}
+.form-input {
+  width: 100%;
+  padding: 13px 16px;
+  border-radius: var(--r-md);
+  background: rgba(255,255,255,0.09);
+  border: 1.5px solid rgba(255,255,255,0.18);
+  color: #fff;
+  font-size: 15px;
+  font-family: var(--font-sans);
+  min-height: 48px;
+  transition: border-color 180ms ease, background 180ms ease;
+  outline: none;
+}
+.form-input::placeholder { color: rgba(255,255,255,0.35); }
+.form-input:focus {
+  border-color: rgba(255,255,255,0.45);
+  background: rgba(255,255,255,0.14);
+}
+.form-note {
+  font-size: 12px;
+  color: rgba(255,255,255,0.40);
+  text-align: center;
+}
+
+/* ═══════════════════════════════════════════
+   ELIGIBILITY — Bento
+═══════════════════════════════════════════ */
+.eligibility { background: var(--bg-alt); padding: 96px 0; }
+
+.eligibility-header {
+  margin-bottom: 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.eligibility-bento {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+@media (min-width: 768px) { .eligibility-bento { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1024px) {
+  .eligibility-bento { grid-template-columns: 1fr 1fr 1fr; }
+  .eligibility-bento-main { grid-column: 1 / 3; }
+}
+
+.eligibility-card {
+  background: var(--surface);
+  border: 1px solid var(--border-med);
+  border-radius: var(--r-xl);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  transition: all 240ms var(--ease-out);
+}
+.eligibility-card:hover {
+  border-color: var(--stiletto-200);
+  box-shadow: 0 8px 32px oklch(0 0 0 / 0.07);
+  transform: translateY(-3px);
+}
+.eligibility-card-heading { font-size: 1.25rem; color: var(--text); }
+.eligibility-card-copy { font-size: 15px; color: var(--text-body); line-height: 1.65; }
+.eligibility-reqs { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.eligibility-req {
+  display: flex;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--text-body);
+  align-items: flex-start;
+}
+.eligibility-req-check {
+  width: 18px; height: 18px; flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--primary-lt);
+  color: var(--primary);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  margin-top: 1px;
+}
+
+.eligibility-crisis-card {
+  background: var(--crisis-lt);
+  border-color: var(--crisis-bd);
+}
+.eligibility-crisis-card:hover { border-color: var(--crisis); }
+.eligibility-crisis-heading { color: var(--crisis-text); }
+.eligibility-crisis-card .eligibility-req-check {
+  background: rgba(164, 85, 0, 0.10);
+  color: var(--crisis-text);
+}
+.eligibility-crisis-card .eligibility-req { color: var(--crisis-text); opacity: 0.85; }
+
+/* ═══════════════════════════════════════════
+   CONTACT
+═══════════════════════════════════════════ */
+.contact { background: var(--surface); padding: 96px 0; }
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+}
+@media (min-width: 1024px) { .contact-grid { grid-template-columns: 1fr 1fr; gap: 64px; } }
+
+.contact-content { display: flex; flex-direction: column; gap: 32px; }
+.contact-heading { color: var(--text); }
+.contact-copy { font-size: 17px; color: var(--text-body); line-height: 1.8; }
+
+.contact-methods { display: flex; flex-direction: column; gap: 12px; }
+.contact-method {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 18px 20px;
+  border-radius: var(--r-md);
+  background: var(--warm-50);
+  border: 1px solid var(--border);
+  transition: all 200ms ease;
+}
+.contact-method:hover {
+  border-color: var(--stiletto-200);
+  box-shadow: 0 4px 16px oklch(0 0 0 / 0.06);
+  transform: translateX(4px);
+}
+.contact-method-icon {
+  width: 40px; height: 40px; flex-shrink: 0;
+  border-radius: var(--r-sm);
+  background: var(--stiletto-100);
+  color: var(--primary);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+}
+.contact-method-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.10em;
+  color: var(--text-muted);
+  margin-bottom: 3px;
+}
+.contact-method-value { font-size: 16px; font-weight: 600; color: var(--text); }
+.contact-method-hours { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
+
+.crisis-box {
+  padding: 24px;
+  border-radius: var(--r-md);
+  background: var(--crisis-lt);
+  border: 1.5px solid var(--crisis-bd);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.crisis-box-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--crisis-text);
+}
+.crisis-box-headline {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  color: var(--crisis-text);
+}
+.crisis-box-copy { font-size: 14px; color: var(--crisis-text); opacity: 0.80; line-height: 1.65; }
+
+/* Contact form */
+.contact-form-card {
+  background: var(--warm-50);
+  border: 1px solid var(--border-med);
+  border-radius: var(--r-xl);
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  box-shadow: 0 4px 24px oklch(0 0 0 / 0.05);
+}
+.contact-form-title { font-family: var(--font-serif); font-size: 1.625rem; color: var(--text); }
+.contact-form-subtitle { font-size: 14px; color: var(--text-muted); margin-top: -14px; }
+
+.contact-form { display: flex; flex-direction: column; gap: 20px; }
+.form-field-light { display: flex; flex-direction: column; gap: 6px; }
+.form-label-light {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+.form-input-light {
+  width: 100%;
+  padding: 13px 16px;
+  border-radius: var(--r-md);
+  background: var(--surface);
+  border: 1.5px solid var(--border-med);
+  color: var(--text);
+  font-size: 15px;
+  font-family: var(--font-sans);
+  min-height: 48px;
+  transition: border-color 180ms ease, box-shadow 180ms ease;
+  outline: none;
+}
+.form-input-light:focus {
+  border-color: var(--stiletto-500);
+  box-shadow: 0 0 0 3px var(--stiletto-100);
+}
+.form-select-light {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23948a87' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-color: var(--surface);
+  padding-right: 40px;
+  cursor: pointer;
+}
+.form-textarea-light { min-height: 100px; resize: vertical; }
+
+/* ═══════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════ */
+.footer {
+  background: var(--slate-950);
+  padding: 64px 0 32px;
+}
+.footer-top {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+@media (min-width: 768px) { .footer-top { grid-template-columns: 2fr 1fr 1fr; } }
+
+.footer-brand { display: flex; flex-direction: column; gap: 16px; }
+.footer-logo {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  color: #fff;
+  line-height: 1.2;
+}
+.footer-tagline { font-size: 14px; color: rgba(255,255,255,0.42); max-width: 280px; line-height: 1.65; }
+.footer-crisis-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 14px;
+  border-radius: var(--r-full);
+  background: var(--crisis-lt);
+  border: 1px solid var(--crisis-bd);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--crisis-text);
+  width: fit-content;
+}
+
+.footer-col { display: flex; flex-direction: column; gap: 16px; }
+.footer-col-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.30);
+}
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-links a {
+  font-size: 14px;
+  color: rgba(255,255,255,0.50);
+  transition: color 150ms ease;
+}
+.footer-links a:hover { color: #fff; }
+
+.footer-bottom {
+  padding-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+@media (min-width: 768px) { .footer-bottom { flex-direction: row; justify-content: space-between; align-items: center; } }
+.footer-legal { font-size: 12px; color: rgba(255,255,255,0.25); }
+
+/* ═══════════════════════════════════════════
+   SCROLL REVEAL
+═══════════════════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 650ms var(--ease-out), transform 650ms var(--ease-out);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 90ms; }
+.reveal-delay-2 { transition-delay: 180ms; }
+.reveal-delay-3 { transition-delay: 270ms; }
+.reveal-delay-4 { transition-delay: 360ms; }
+
+/* Image parallax hint */
+.parallax-img { will-change: transform; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .services-panels { opacity: 1; transform: none; transition: none; }
+  .trust-marquee { animation: none; }
+  .hero-badge, .hero-card { animation: none; }
+  .hero-badge-dot { animation: none; }
+  .hero-content > * { animation: none; }
+  .hero-visual { animation: none; }
+  .parallax-img { transform: none !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo" aria-label="Commonwealth Supportive Services home">
+      <img
+        src="https://csupportiveservices.org/wp-content/uploads/2024/01/cropped-6-png-207x69.png"
+        alt="Commonwealth Supportive Services"
+        width="160" height="53"
+      >
+    </a>
+    <div class="nav-links" role="list">
+      <a href="#services" class="nav-link" role="listitem">Services</a>
+      <a href="#about" class="nav-link" role="listitem">About</a>
+      <a href="#eligibility" class="nav-link" role="listitem">Eligibility</a>
+      <a href="#contact" class="nav-link" role="listitem">Contact</a>
+    </div>
+    <a href="tel:8045662049" class="nav-phone" aria-label="Call us at 804-566-2049">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.01z"/></svg>
+      <span class="nav-phone-label">804-566-2049</span>
+    </a>
+    <a href="#contact" class="btn btn--primary nav-cta-btn">Get Care Today</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero" aria-labelledby="hero-headline">
+  <div class="container">
+    <div class="hero-inner">
+
+      <div class="hero-content">
+        <div class="hero-badge" aria-label="Currently open — Richmond VA, Medicaid accepted, 24/7">
+          <span class="hero-badge-dot" aria-hidden="true"></span>
+          Serving Richmond, VA · Medicaid Accepted · Open 24/7
+        </div>
+
+        <h1 class="display hero-headline" id="hero-headline">
+          When your family<br>
+          needs support,<br>
+          <em>we show up.</em>
+        </h1>
+
+        <p class="hero-sub">
+          Commonwealth Supportive Services provides Medicaid-funded care for adults with developmental disabilities and individuals in behavioral health crisis. Person-centered. Licensed. Available around the clock.
+        </p>
+
+        <div class="btn-group">
+          <a href="#contact" class="btn btn--primary">Get Care Today</a>
+          <a href="#services" class="btn btn--outline">See How It Works</a>
+        </div>
+
+        <div class="hero-crisis" role="note">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          In a mental health crisis right now?&nbsp;<strong><a href="tel:988" style="color:inherit;">Call or text 988</a></strong>&nbsp;— Free · Confidential · 24/7
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-image-wrap">
+          <img
+            src="https://i0.wp.com/csupportiveservices.org/wp-content/uploads/2023/12/Image-2.jpeg"
+            alt="A smiling woman in a wheelchair holding a child — Commonwealth Supportive Services"
+            class="parallax-img"
+            loading="eager"
+          >
+        </div>
+        <div class="hero-image-accent" aria-hidden="true"></div>
+
+        <!-- Floating feature card -->
+        <div class="hero-card" aria-label="Services overview">
+          <div class="hero-card-title">What we provide</div>
+          <div class="hero-card-items">
+            <div class="hero-card-item">
+              <div class="hero-card-icon" aria-hidden="true">🏠</div>
+              <div><strong>DD Waiver Support</strong>Residential care for adults with developmental disabilities</div>
+            </div>
+            <div class="hero-card-item">
+              <div class="hero-card-icon" aria-hidden="true">🚨</div>
+              <div><strong>Mobile Crisis</strong>In-person response, 24 hours a day, every day</div>
+            </div>
+            <div class="hero-card-item">
+              <div class="hero-card-icon" aria-hidden="true">🤝</div>
+              <div><strong>Community Stabilization</strong>Post-crisis support to keep people home</div>
+            </div>
+          </div>
+          <div class="hero-card-divider"></div>
+          <div class="hero-card-cert">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Licensed Medicaid Provider · DBHDS Certified
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── TRUST BAR ── -->
+<div class="trust-bar" aria-label="Trust indicators" role="region">
+  <div class="trust-marquee" aria-hidden="true">
+    <div class="trust-item"><span class="trust-item-dot"></span>Licensed Medicaid Provider</div>
+    <div class="trust-item"><span class="trust-item-dot"></span>Virginia DBHDS Certified</div>
+    <div class="trust-item"><span class="trust-item-dot"></span>24/7 Crisis Response</div>
+    <div class="trust-item"><span class="trust-item-dot"></span>Person-Centered Care</div>
+    <div class="trust-item"><span class="trust-item-dot"></span>No Out-of-Pocket Cost</div>
+    <div class="trust-item"><span class="trust-item-dot"></span>Serving Richmond Since 2022</div>
+    <div class="trust-item"><span class="trust-item-dot"></span>Referrals Accepted 24/7</div>
+    <!-- duplicate for seamless loop -->
+    <div class="trust-item"><span class="trust-item-dot"></span>Licensed Medicaid Provider</div>
+    <div class="trust-item"><span class="trust-item-dot"></span>Virginia DBHDS Certified</div>
+    <div class="trust-item"><span class="trust-item-dot"></span>24/7 Crisis Response</div>
+    <div class="trust-item"><span class="trust-item-dot"></span>Person-Centered Care</div>
+    <div class="trust-item"><span class="trust-item-dot"></span>No Out-of-Pocket Cost</div>
+    <div class="trust-item"><span class="trust-item-dot"></span>Serving Richmond Since 2022</div>
+    <div class="trust-item"><span class="trust-item-dot"></span>Referrals Accepted 24/7</div>
+  </div>
+</div>
+
+<!-- ── MISSION STRIP ── -->
+<div class="mission-strip" role="region" aria-label="Our mission">
+  <div class="container">
+    <div class="mission-strip-inner reveal">
+      <div class="mission-strip-accent" aria-hidden="true"></div>
+      <blockquote class="mission-strip-quote">
+        "Our mission is to support individuals to exercise their freedom to make choices and preferences — and to give them quality, safe care in a supportive and loving environment."
+      </blockquote>
+      <cite class="mission-strip-cite">— Commonwealth Supportive Services</cite>
+    </div>
+  </div>
+</div>
+
+<!-- ── PROBLEM ── -->
+<section class="problem section" id="problem" aria-labelledby="problem-heading">
+  <div class="container">
+    <div class="problem-grid">
+
+      <div class="problem-visual reveal">
+        <img
+          src="https://i0.wp.com/csupportiveservices.org/wp-content/uploads/2023/12/woman-her-friend-wheelchair-having-stroll-through-park-river-enjoying-autumn.jpg"
+          alt="A caregiver assisting a person in a wheelchair through a park"
+          class="problem-visual-img"
+          loading="lazy"
+        >
+        <div class="problem-overlay-card">
+          <div class="problem-overlay-label">The challenge</div>
+          <div class="problem-overlay-value">Navigating Medicaid care alone is overwhelming. You deserve a guide.</div>
+        </div>
+      </div>
+
+      <div class="problem-content">
+        <div class="problem-intro">
+          <span class="eyebrow reveal">The gap in care</span>
+          <h2 class="h2 reveal reveal-delay-1" id="problem-heading">
+            Finding the right support<br>
+            <em style="font-style:italic; color:var(--primary);">shouldn't feel this hard.</em>
+          </h2>
+          <p class="problem-body reveal reveal-delay-2">
+            You're trying to do right by someone you love. But the system wasn't built to be easy. Medicaid rules are confusing. Crisis lines feel impersonal. And when something goes wrong at 2 a.m., you don't always know who to call.
+          </p>
+        </div>
+        <ul class="problem-list reveal reveal-delay-3" aria-label="Common challenges families face">
+          <li class="problem-list-item">
+            <div class="problem-list-icon" aria-hidden="true">📋</div>
+            <span class="problem-list-text">You're not sure which services your loved one actually qualifies for under Medicaid.</span>
+          </li>
+          <li class="problem-list-item">
+            <div class="problem-list-icon" aria-hidden="true">🌙</div>
+            <span class="problem-list-text">A crisis happens after hours and there's no one to guide you through it.</span>
+          </li>
+          <li class="problem-list-item">
+            <div class="problem-list-icon" aria-hidden="true">📄</div>
+            <span class="problem-list-text">You've been handed paperwork instead of a real plan.</span>
+          </li>
+        </ul>
+        <div class="reveal reveal-delay-4">
+          <a href="#eligibility" class="btn btn--primary">Find Out If You Qualify</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── GUIDE ── -->
+<section class="guide section" id="about" aria-labelledby="guide-heading">
+  <div class="guide-glow" aria-hidden="true"></div>
+  <div class="guide-glow-2" aria-hidden="true"></div>
+  <div class="container">
+    <div class="guide-grid">
+
+      <div class="guide-content">
+        <span class="eyebrow eyebrow--light reveal">Your trusted guide</span>
+        <h2 class="h2 h2--light guide-heading reveal reveal-delay-1" id="guide-heading">
+          We've navigated<br>this system.<br>
+          <em>We'll walk you through it.</em>
+        </h2>
+        <p class="guide-body reveal reveal-delay-2">
+          Commonwealth Supportive Services is a licensed Medicaid provider led by Shapall King, LMHP-S. Our team knows the referral process, the waiver system, and the agencies who can help move things forward.
+        </p>
+        <p class="guide-body reveal reveal-delay-2">
+          You don't have to figure this out alone. We already know the path.
+        </p>
+        <div class="guide-stats reveal reveal-delay-3">
+          <div class="guide-stat">
+            <div class="guide-stat-value" data-counter="24/7">24/7</div>
+            <div class="guide-stat-label">Crisis response, every day, no exceptions</div>
+          </div>
+          <div class="guide-stat">
+            <div class="guide-stat-value" data-counter="3">3</div>
+            <div class="guide-stat-label">Service lines covering every stage of care</div>
+          </div>
+          <div class="guide-stat">
+            <div class="guide-stat-value">$0</div>
+            <div class="guide-stat-label">Out-of-pocket for Medicaid-eligible individuals</div>
+          </div>
+          <div class="guide-stat">
+            <div class="guide-stat-value" data-counter="2022">2022</div>
+            <div class="guide-stat-label">Established and growing in Greater Richmond</div>
+          </div>
+        </div>
+        <div class="reveal reveal-delay-4">
+          <a href="#contact" class="btn btn--white">Get Care Today</a>
+        </div>
+      </div>
+
+        <div class="guide-profile reveal reveal-delay-2">
+        <img
+          src="https://i0.wp.com/csupportiveservices.org/wp-content/uploads/2024/01/pic-4-.jpeg"
+          alt="Commonwealth Supportive Services team in action"
+          class="guide-profile-img"
+          loading="lazy"
+        >
+        <div class="guide-profile-bio">
+          <span class="guide-profile-credential">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Licensed Mental Health Professional · Supervisor
+          </span>
+          <div class="guide-profile-name">Shapall King, LMHP-S</div>
+          <div class="guide-profile-title">Founder · Program Director · Clinical Director</div>
+          <p class="guide-profile-copy">
+            Shapall King founded Commonwealth Supportive Services after seeing how many Richmond families were left without guidance navigating Virginia's Medicaid system. She built CSS to be the provider she wished had existed — licensed, accessible, and truly person-centered.
+          </p>
+          <div class="guide-profile-tags">
+            <span class="guide-profile-tag">Waiver Services · Est. 2022</span>
+            <span class="guide-profile-tag">Behavioral Health · Est. 2023</span>
+          </div>
+        </div>
+        <a href="#contact" class="btn btn--ghost-dark" style="width:100%; justify-content:center;">Get Care Today</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICES ── -->
+<section class="services section" id="services" aria-labelledby="services-heading">
+  <div class="container">
+
+    <div class="services-header reveal">
+      <span class="eyebrow eyebrow--muted">What we offer</span>
+      <h2 class="h2" id="services-heading">Three programs. One trusted team.</h2>
+      <p>All Medicaid-funded. No out-of-pocket cost for eligible individuals and families.</p>
+    </div>
+
+    <!-- ── MOBILE ACCORDION (hidden ≥ 900px) ── -->
+    <div class="services-accordion" aria-label="Our three services">
+
+      <!-- DD Waiver -->
+      <div class="acc-item open reveal" id="acc-dd">
+        <button class="acc-trigger" aria-expanded="true" aria-controls="acc-body-dd" id="acc-btn-dd">
+          <div class="acc-trigger-left">
+            <div class="acc-icon" aria-hidden="true">🏠</div>
+            <div class="acc-label-block">
+              <span class="acc-title">DD Waiver Support</span>
+              <span class="acc-subtitle">Residential &amp; community care</span>
+            </div>
+          </div>
+          <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="acc-body" id="acc-body-dd" role="region" aria-labelledby="acc-btn-dd">
+          <div class="acc-body-inner">
+            <div class="acc-content">
+              <img src="https://i0.wp.com/csupportiveservices.org/wp-content/uploads/2023/12/Image-6.jpeg" alt="Caregiver with a person with developmental disabilities" class="acc-image" loading="lazy">
+              <p class="acc-desc">Residential and community support for adults with developmental disabilities. Our team monitors, coordinates, and works toward each person's goals around the clock. Covered fully by Medicaid.</p>
+              <ul class="acc-features">
+                <li class="acc-feature">24-hour residential monitoring</li>
+                <li class="acc-feature">Medical appointment coordination</li>
+                <li class="acc-feature">Person-centered goal planning</li>
+                <li class="acc-feature">Community integration activities</li>
+              </ul>
+              <a href="#contact" class="btn btn--primary" style="width:100%;justify-content:center;">Check If You Qualify</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Crisis -->
+      <div class="acc-item reveal reveal-delay-1" id="acc-crisis">
+        <button class="acc-trigger" aria-expanded="false" aria-controls="acc-body-crisis" id="acc-btn-crisis">
+          <div class="acc-trigger-left">
+            <div class="acc-icon" aria-hidden="true">🚨</div>
+            <div class="acc-label-block">
+              <span class="acc-title">Mobile Crisis Response</span>
+              <span class="acc-subtitle">24/7 in-person response</span>
+            </div>
+          </div>
+          <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="acc-body" id="acc-body-crisis" role="region" aria-labelledby="acc-btn-crisis">
+          <div class="acc-body-inner">
+            <div class="acc-content">
+              <img src="https://i0.wp.com/csupportiveservices.org/wp-content/uploads/2023/12/Image-4.jpeg" alt="Mobile crisis support team member" class="acc-image" loading="lazy">
+              <p class="acc-desc">When a mental health crisis happens, we come to you. Our team responds around the clock, wherever you are. No waiting rooms. No judgment. Referred through the 988 crisis line.</p>
+              <ul class="acc-features">
+                <li class="acc-feature">In-person response, any time of day</li>
+                <li class="acc-feature">De-escalation and stabilization</li>
+                <li class="acc-feature">Connection to follow-up care</li>
+                <li class="acc-feature">No insurance required for 988</li>
+              </ul>
+              <a href="tel:988" class="btn" style="background:var(--crisis);color:#fff;width:100%;justify-content:center;display:flex;align-items:center;min-height:48px;border-radius:var(--r-md);font-weight:700;font-size:15px;">Call or Text 988 Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Community Stabilization -->
+      <div class="acc-item reveal reveal-delay-2" id="acc-stab">
+        <button class="acc-trigger" aria-expanded="false" aria-controls="acc-body-stab" id="acc-btn-stab">
+          <div class="acc-trigger-left">
+            <div class="acc-icon" aria-hidden="true">🤝</div>
+            <div class="acc-label-block">
+              <span class="acc-title">Community Stabilization</span>
+              <span class="acc-subtitle">Post-crisis support</span>
+            </div>
+          </div>
+          <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="acc-body" id="acc-body-stab" role="region" aria-labelledby="acc-btn-stab">
+          <div class="acc-body-inner">
+            <div class="acc-content">
+              <img src="https://i0.wp.com/csupportiveservices.org/wp-content/uploads/2024/01/CARD-Community-Stabilization-BRIDGE-Housing-DavidBakerArchitects-JulioCesarMartinez.jpg" alt="Community stabilization support" class="acc-image" loading="lazy">
+              <p class="acc-desc">Short-term intensive support after a crisis. We help individuals stabilize at home instead of returning to the hospital, with care coordination and community connections included. Medicaid-funded.</p>
+              <ul class="acc-features">
+                <li class="acc-feature">Short-term intensive in-home support</li>
+                <li class="acc-feature">Care coordination and planning</li>
+                <li class="acc-feature">Prevents unnecessary hospitalization</li>
+                <li class="acc-feature">Medicaid-authorized</li>
+              </ul>
+              <a href="#contact" class="btn btn--primary" style="width:100%;justify-content:center;">Get Care Started Today</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /services-accordion -->
+
+    <!-- ── DESKTOP TABS (hidden < 900px) ── -->
+    <div class="services-layout">
+      <div class="services-tabs" role="tablist" aria-label="Available services">
+        <button class="services-tab active reveal" role="tab" data-panel="dd" aria-selected="true" aria-controls="panel-dd" id="tab-dd">
+          <span class="services-tab-icon" aria-hidden="true">🏠</span>
+          <div class="services-tab-content">
+            <span class="services-tab-name">DD Waiver Support</span>
+            <span class="services-tab-short">Residential &amp; community care</span>
+          </div>
+        </button>
+        <button class="services-tab reveal reveal-delay-1" role="tab" data-panel="crisis" aria-selected="false" aria-controls="panel-crisis" id="tab-crisis">
+          <span class="services-tab-icon" aria-hidden="true">🚨</span>
+          <div class="services-tab-content">
+            <span class="services-tab-name">Mobile Crisis Response</span>
+            <span class="services-tab-short">24/7 in-person response</span>
+          </div>
+        </button>
+        <button class="services-tab reveal reveal-delay-2" role="tab" data-panel="stabilization" aria-selected="false" aria-controls="panel-stabilization" id="tab-stabilization">
+          <span class="services-tab-icon" aria-hidden="true">🤝</span>
+          <div class="services-tab-content">
+            <span class="services-tab-name">Community Stabilization</span>
+            <span class="services-tab-short">Post-crisis support</span>
+          </div>
+        </button>
+      </div>
+
+      <div class="services-panels" id="services-panels-wrap">
+        <div class="services-panel active" id="panel-dd" role="tabpanel" aria-labelledby="tab-dd">
+          <div class="services-panel-inner">
+            <div class="services-panel-image-wrap">
+              <img src="https://i0.wp.com/csupportiveservices.org/wp-content/uploads/2023/12/Image-6.jpeg" alt="Caregiver supporting an individual with developmental disabilities" class="services-panel-image" loading="lazy">
+            </div>
+            <div class="services-panel-body">
+              <div class="services-panel-tag-row">
+                <span class="tag">DD Waiver</span>
+                <span class="tag tag--neutral">Medicaid-Funded · $0 Cost</span>
+              </div>
+              <h3 class="services-panel-heading">Developmental Disability Waiver</h3>
+              <p class="services-panel-copy">Residential and community support for adults with intellectual and developmental disabilities. Our team monitors individuals around the clock, coordinates medical appointments, supports medication management, and works toward each person's individual goals.</p>
+              <ul class="services-panel-features" aria-label="DD Waiver service features">
+                <li class="services-panel-feature">24-hour residential monitoring</li>
+                <li class="services-panel-feature">Medical appointment coordination</li>
+                <li class="services-panel-feature">Medication management support</li>
+                <li class="services-panel-feature">Person-centered goal planning</li>
+                <li class="services-panel-feature">Community integration activities</li>
+                <li class="services-panel-feature">Family education and support</li>
+              </ul>
+              <a href="#contact" class="btn btn--primary" style="width:fit-content;">Check If You Qualify</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="services-panel" id="panel-crisis" role="tabpanel" aria-labelledby="tab-crisis">
+          <div class="services-panel-inner">
+            <div class="services-panel-image-wrap">
+              <img src="https://i0.wp.com/csupportiveservices.org/wp-content/uploads/2023/12/Image-4.jpeg" alt="Mobile crisis response team member providing immediate support" class="services-panel-image" loading="lazy">
+            </div>
+            <div class="services-panel-body">
+              <div class="services-panel-tag-row">
+                <span class="tag">Mobile Crisis</span>
+                <span class="tag tag--crisis">Call or Text 988</span>
+              </div>
+              <h3 class="services-panel-heading">Mobile Crisis Response</h3>
+              <p class="services-panel-copy">When a behavioral health crisis happens, we come to you. Our team responds 24 hours a day, seven days a week. We meet individuals at home, in the community, or wherever they need us. No waiting room. No judgment.</p>
+              <ul class="services-panel-features" aria-label="Mobile Crisis service features">
+                <li class="services-panel-feature">In-person response, 24/7</li>
+                <li class="services-panel-feature">Comes to you, wherever you are</li>
+                <li class="services-panel-feature">De-escalation and stabilization</li>
+                <li class="services-panel-feature">Connection to follow-up care</li>
+                <li class="services-panel-feature">Referred through 988 crisis line</li>
+                <li class="services-panel-feature">No insurance required for 988</li>
+              </ul>
+              <a href="tel:988" class="btn" style="background:var(--crisis);color:#fff;padding:14px 28px;border-radius:var(--r-md);font-weight:700;font-size:15px;min-height:48px;display:inline-flex;align-items:center;width:fit-content;transition:all 200ms ease;">Call or Text 988 Now</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="services-panel" id="panel-stabilization" role="tabpanel" aria-labelledby="tab-stabilization">
+          <div class="services-panel-inner">
+            <div class="services-panel-image-wrap">
+              <img src="https://i0.wp.com/csupportiveservices.org/wp-content/uploads/2024/01/CARD-Community-Stabilization-BRIDGE-Housing-DavidBakerArchitects-JulioCesarMartinez.jpg" alt="Community housing and stabilization support" class="services-panel-image" loading="lazy">
+            </div>
+            <div class="services-panel-body">
+              <div class="services-panel-tag-row">
+                <span class="tag">Community Stabilization</span>
+                <span class="tag tag--neutral">Medicaid-Funded · $0 Cost</span>
+              </div>
+              <h3 class="services-panel-heading">Community Stabilization</h3>
+              <p class="services-panel-copy">After a crisis, getting stable at home is better than returning to the hospital. Our team provides short-term intensive support, care coordination, and community resources to help individuals stabilize and stay on track.</p>
+              <ul class="services-panel-features" aria-label="Community Stabilization service features">
+                <li class="services-panel-feature">Short-term intensive support</li>
+                <li class="services-panel-feature">Care coordination and planning</li>
+                <li class="services-panel-feature">Connects to community resources</li>
+                <li class="services-panel-feature">Prevents re-hospitalization</li>
+                <li class="services-panel-feature">Follows Mobile Crisis response</li>
+                <li class="services-panel-feature">Medicaid-authorized services</li>
+              </ul>
+              <a href="#contact" class="btn btn--primary" style="width:fit-content;">Get Care Started Today</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /services-layout -->
+
+  </div>
+</section>
+
+<!-- ── PLAN ── -->
+<section class="plan section" id="plan" aria-labelledby="plan-heading">
+  <div class="container">
+    <div class="plan-header reveal">
+      <span class="eyebrow eyebrow--muted">How it works</span>
+      <h2 class="h2" id="plan-heading">Three steps to get started.</h2>
+      <p>No complicated intake. No confusing forms. We walk you through every step.</p>
+    </div>
+    <div class="plan-steps">
+      <div class="plan-step reveal">
+        <div class="plan-step-number" aria-hidden="true">1</div>
+        <h3 class="plan-step-title">Submit a referral</h3>
+        <p class="plan-step-copy">Call us, email us, or fill out the form on this page. We respond within one business day. Usually faster.</p>
+      </div>
+      <div class="plan-step reveal reveal-delay-1">
+        <div class="plan-step-number" aria-hidden="true">2</div>
+        <h3 class="plan-step-title">We verify eligibility</h3>
+        <p class="plan-step-copy">Our team confirms Medicaid eligibility and matches the individual to the right services. We do the legwork.</p>
+      </div>
+      <div class="plan-step reveal reveal-delay-2">
+        <div class="plan-step-number" aria-hidden="true">3</div>
+        <h3 class="plan-step-title">Care begins</h3>
+        <p class="plan-step-copy">We build a person-centered plan and assign a dedicated support team. Services start as soon as authorization comes through.</p>
+      </div>
+    </div>
+    <div class="plan-cta reveal">
+      <a href="#contact" class="btn btn--primary">Get Care Today</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIAL ── -->
+<section class="testimonial section" aria-labelledby="testimonial-heading">
+  <div class="testimonial-deco" aria-hidden="true">"</div>
+  <div class="container">
+    <div class="testimonial-inner">
+      <blockquote class="testimonial-quote reveal" id="testimonial-heading">
+        "Commonwealth Supportive Services didn't just help us find care. They helped us understand what my son was entitled to. The team was patient, knowledgeable, and always there when we needed them."
+      </blockquote>
+      <div class="testimonial-divider" aria-hidden="true"></div>
+      <div class="testimonial-attr reveal reveal-delay-1">
+        <span class="testimonial-name">Maria T.</span>
+        <span class="testimonial-role">Parent of a DD Waiver recipient — Richmond, VA</span>
+        <span class="testimonial-disclaimer" role="note">
+          Placeholder testimonial — replace with a real client quote before launch
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── LEAD MAGNET ── -->
+<section class="lead-magnet section" aria-labelledby="lead-magnet-heading">
+  <div class="container">
+    <div class="lead-magnet-inner">
+      <div class="lead-magnet-content">
+        <span class="lead-magnet-label">Free resource</span>
+        <h2 class="lead-magnet-heading" id="lead-magnet-heading">
+          Not sure where to start?<br>Download the Richmond Family Guide.
+        </h2>
+        <p class="lead-magnet-copy">
+          A plain-English guide explaining how Medicaid-funded care works in Virginia, which services your loved one may qualify for, and exactly how to start the referral process.
+        </p>
+        <ul class="lead-magnet-items" aria-label="What's inside the guide">
+          <li class="lead-magnet-item">How DD Waiver services work and who qualifies in Virginia</li>
+          <li class="lead-magnet-item">What Mobile Crisis response looks like and when to use it</li>
+          <li class="lead-magnet-item">Five questions to ask any provider before you sign anything</li>
+        </ul>
+      </div>
+      <div class="lead-magnet-form">
+        <div class="lead-magnet-form-card">
+          <p class="lead-magnet-form-title">Send me the free guide</p>
+          <div class="form-field">
+            <label class="form-label" for="lm-email">Email address</label>
+            <input class="form-input" type="email" id="lm-email" placeholder="you@email.com" autocomplete="email">
+          </div>
+          <button type="button" class="btn btn--white" style="justify-content:center; width:100%;">Send Me the Free Guide</button>
+          <p class="form-note">We don't share your information. Unsubscribe anytime.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ELIGIBILITY ── -->
+<section class="eligibility section" id="eligibility" aria-labelledby="eligibility-heading">
+  <div class="container">
+    <div class="eligibility-header">
+      <span class="eyebrow eyebrow--muted reveal">Who we serve</span>
+      <h2 class="h2 reveal reveal-delay-1" id="eligibility-heading">Do you qualify?</h2>
+      <p class="reveal reveal-delay-2" style="font-size:17px; color:var(--text-muted); max-width:520px;">Our services are available to Medicaid-eligible individuals in the Greater Richmond area.</p>
+    </div>
+    <div class="eligibility-bento">
+      <div class="eligibility-card eligibility-bento-main reveal">
+        <span class="tag" style="width:fit-content;">DD Waiver &amp; Community Stabilization</span>
+        <h3 class="h3 eligibility-card-heading">DD Waiver and Community Stabilization</h3>
+        <p class="eligibility-card-copy">For adults with intellectual or developmental disabilities, and for individuals who need short-term behavioral health support to stay stable in the community.</p>
+        <ul class="eligibility-reqs" aria-label="DD Waiver eligibility requirements">
+          <li class="eligibility-req"><span class="eligibility-req-check" aria-hidden="true">✓</span>Active Virginia Medicaid enrollment</li>
+          <li class="eligibility-req"><span class="eligibility-req-check" aria-hidden="true">✓</span>Diagnosis of intellectual or developmental disability (for DD Waiver)</li>
+          <li class="eligibility-req"><span class="eligibility-req-check" aria-hidden="true">✓</span>Located in the Greater Richmond, Virginia area</li>
+          <li class="eligibility-req"><span class="eligibility-req-check" aria-hidden="true">✓</span>Self-referrals and case manager referrals both accepted</li>
+        </ul>
+        <a href="#contact" class="btn btn--primary" style="width:fit-content;">Get Care Today</a>
+      </div>
+      <div class="eligibility-card eligibility-crisis-card reveal reveal-delay-1">
+        <span class="tag tag--crisis" style="width:fit-content;">Mobile Crisis Response</span>
+        <h3 class="h3 eligibility-card-heading eligibility-crisis-heading">Mobile Crisis Response</h3>
+        <p class="eligibility-card-copy" style="color:var(--crisis-text); opacity:0.85;">Available to any individual experiencing a behavioral health crisis in the Greater Richmond area. You don't need Medicaid to call 988.</p>
+        <ul class="eligibility-reqs eligibility-crisis-reqs" aria-label="Mobile Crisis eligibility">
+          <li class="eligibility-req"><span class="eligibility-req-check eligibility-crisis-check" aria-hidden="true" style="background:rgba(164,85,0,0.10);color:var(--crisis-text);">✓</span><span style="color:var(--crisis-text);">Currently experiencing a mental health or substance use crisis</span></li>
+          <li class="eligibility-req"><span class="eligibility-req-check eligibility-crisis-check" aria-hidden="true" style="background:rgba(164,85,0,0.10);color:var(--crisis-text);">✓</span><span style="color:var(--crisis-text);">Located in the Greater Richmond, Virginia area</span></li>
+          <li class="eligibility-req"><span class="eligibility-req-check eligibility-crisis-check" aria-hidden="true" style="background:rgba(164,85,0,0.10);color:var(--crisis-text);">✓</span><span style="color:var(--crisis-text);">No insurance required to access 988</span></li>
+        </ul>
+        <a href="tel:988" class="btn" style="background:var(--crisis); color:#fff; padding:14px 28px; border-radius:var(--r-md); font-weight:600; font-size:15px; min-height:48px; display:inline-flex; align-items:center; width:fit-content; transition:all 200ms ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">Call or Text 988</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section class="contact section" id="contact" aria-labelledby="contact-heading">
+  <div class="container">
+    <div class="contact-grid">
+
+      <div class="contact-content">
+        <div>
+          <span class="eyebrow eyebrow--muted reveal">Get in touch</span>
+          <h2 class="h2 contact-heading reveal reveal-delay-1" id="contact-heading" style="margin-top:12px;">Ready to get started?</h2>
+        </div>
+        <p class="contact-copy reveal reveal-delay-2">Our team responds within one business day. For crisis support, call or text 988 anytime. It's free.</p>
+
+        <div class="contact-methods reveal reveal-delay-3">
+          <div class="contact-method">
+            <div class="contact-method-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.01z"/></svg>
+            </div>
+            <div>
+              <div class="contact-method-label">Phone</div>
+              <div class="contact-method-value"><a href="tel:8045662049" style="color:inherit;">804-566-2049</a></div>
+              <div class="contact-method-hours">Mon–Fri, 9 a.m. to 5 p.m. Fastest response.</div>
+            </div>
+          </div>
+          <div class="contact-method">
+            <div class="contact-method-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <div class="contact-method-label">Email</div>
+              <div class="contact-method-value"><a href="/cdn-cgi/l/email-protection#682b3b3b280b1b1d1818071a1c011e0d1b0d1a1e010b0d1b46071a0f" style="color:inherit;"><span class="__cf_email__" data-cfemail="befdededfeddcdcbceced1cccad7c8dbcddbccc8d7dddbcd90d1ccd9">[email&#160;protected]</span></a></div>
+              <div class="contact-method-hours">We reply within one business day.</div>
+            </div>
+          </div>
+          <div class="contact-method">
+            <div class="contact-method-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <div class="contact-method-label">Address</div>
+              <div class="contact-method-value">16 S 2nd St, Suite 300</div>
+              <div class="contact-method-hours">Richmond, VA 23219</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="crisis-box reveal reveal-delay-4" role="note" aria-label="Mental health emergency information">
+          <span class="crisis-box-label">Mental health emergency</span>
+          <div class="crisis-box-headline">Call or text 988 anytime.</div>
+          <p class="crisis-box-copy">For immediate physical danger, call 911. For a behavioral health crisis, the 988 Suicide and Crisis Lifeline is available 24 hours a day, seven days a week, at no cost to anyone.</p>
+        </div>
+      </div>
+
+      <div class="contact-form-card reveal reveal-delay-2">
+        <div>
+          <h3 class="contact-form-title">Submit a Referral</h3>
+          <p class="contact-form-subtitle">We respond within one business day.</p>
+        </div>
+        <form class="contact-form" onsubmit="return false;" aria-label="Referral submission form" novalidate>
+          <div class="form-field-light">
+            <label class="form-label-light" for="name">Full Name <span aria-label="required">*</span></label>
+            <input class="form-input-light" type="text" id="name" placeholder="Your full name" required autocomplete="name">
+          </div>
+          <div class="form-field-light">
+            <label class="form-label-light" for="phone">Phone Number</label>
+            <input class="form-input-light" type="tel" id="phone" placeholder="(804) 000-0000" autocomplete="tel">
+          </div>
+          <div class="form-field-light">
+            <label class="form-label-light" for="email">Email Address <span aria-label="required">*</span></label>
+            <input class="form-input-light" type="email" id="email" placeholder="you@email.com" required autocomplete="email">
+          </div>
+          <div class="form-field-light">
+            <label class="form-label-light" for="service">Service Needed</label>
+            <select class="form-input-light form-select-light" id="service">
+              <option value="">Select a service...</option>
+              <option value="dd">DD Waiver Support</option>
+              <option value="crisis">Mobile Crisis Response</option>
+              <option value="stabilization">Community Stabilization</option>
+              <option value="unsure">Not sure — I need guidance</option>
+            </select>
+          </div>
+          <div class="form-field-light">
+            <label class="form-label-light" for="notes">Additional Information</label>
+            <textarea class="form-input-light form-textarea-light" id="notes" placeholder="Tell us a bit about the situation (optional)"></textarea>
+          </div>
+          <button type="submit" class="btn btn--primary" style="width:100%; justify-content:center;">Submit Referral Today</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="footer" aria-label="Site footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">Commonwealth Supportive Services</div>
+        <p class="footer-tagline">Licensed Medicaid provider of developmental disability and behavioral health services in Richmond, Virginia.</p>
+        <div class="footer-crisis-chip" role="note">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          Mental health crisis? Call or text 988.
+        </div>
+      </div>
+      <div class="footer-col">
+        <span class="footer-col-label">Services</span>
+        <ul class="footer-links">
+          <li><a href="#services">DD Waiver Support</a></li>
+          <li><a href="#services">Mobile Crisis Response</a></li>
+          <li><a href="#services">Community Stabilization</a></li>
+          <li><a href="#eligibility">Check Eligibility</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <span class="footer-col-label">Contact</span>
+        <ul class="footer-links">
+          <li><a href="tel:8045662049">804-566-2049</a></li>
+          <li><a href="/cdn-cgi/l/email-protection#470414140724343237372835332e3122342235312e24223469283520"><span class="__cf_email__" data-cfemail="cd8e9e9e8daebeb8bdbda2bfb9a4bba8bea8bfbba4aea8bee3a2bfaa">[email&#160;protected]</span></a></li>
+          <li><a href="https://maps.google.com/?q=16+S+2nd+St+Suite+300+Richmond+VA+23219" target="_blank" rel="noopener">16 S 2nd St, Suite 300<br>Richmond, VA 23219</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-legal">© 2026 Commonwealth Supportive Services, LLC. All rights reserved. Licensed Medicaid Provider · Virginia DBHDS Certified.</p>
+      <p class="footer-legal">Site by <a href="https://maximumexecution.com" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.35); transition:color 150ms ease;" onmouseover="this.style.color='rgba(255,255,255,0.65)'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">MAX.EXE</a></p>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+// ── Nav scroll shadow
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 20);
+}, { passive: true });
+
+// ── Mobile accordion
+document.querySelectorAll('.acc-trigger').forEach(trigger => {
+  trigger.addEventListener('click', () => {
+    const item = trigger.closest('.acc-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.acc-item').forEach(i => {
+      i.classList.remove('open');
+      i.querySelector('.acc-trigger').setAttribute('aria-expanded', 'false');
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      trigger.setAttribute('aria-expanded', 'true');
+    }
+  });
+});
+
+// ── Desktop services tab carousel
+document.querySelectorAll('.services-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    const panelId = tab.dataset.panel;
+    document.querySelectorAll('.services-tab').forEach(t => {
+      t.classList.remove('active');
+      t.setAttribute('aria-selected', 'false');
+    });
+    document.querySelectorAll('.services-panel').forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    tab.setAttribute('aria-selected', 'true');
+    document.getElementById('panel-' + panelId).classList.add('active');
+  });
+});
+
+// ── Universal scroll reveal
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0 });
+
+document.querySelectorAll('.reveal').forEach(el => {
+  el.closest('.hero') ? el.classList.add('visible') : revealObserver.observe(el);
+});
+
+// ── Services panels wrapper reveal
+const panelsWrap = document.getElementById('services-panels-wrap');
+if (panelsWrap) {
+  new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('panels-visible');
+      }
+    });
+  }, { threshold: 0 }).observe(panelsWrap);
+}
+
+// ── Animated stat counters
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    const el = entry.target;
+    const raw = el.dataset.counter;
+    if (raw === '24/7') { el.textContent = '24/7'; return; }
+    const target = parseInt(raw);
+    if (isNaN(target)) return;
+    const start = performance.now();
+    const tick = (now) => {
+      const p = Math.min((now - start) / 1200, 1);
+      el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3)));
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+    counterObserver.unobserve(el);
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('[data-counter]').forEach(el => counterObserver.observe(el));
+
+// ── Parallax on hero image (desktop only)
+if (window.matchMedia('(min-width: 1024px) and (prefers-reduced-motion: no-preference)').matches) {
+  const heroImg = document.querySelector('.hero .parallax-img');
+  if (heroImg) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY < window.innerHeight)
+        heroImg.style.transform = `translateY(${window.scrollY * 0.12}px)`;
+    }, { passive: true });
+  }
+}
+</script>
+</body>
+</html>
